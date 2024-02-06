@@ -65,8 +65,12 @@ Since the websites changes dynamically some code might not work in future when t
 The extraction of data hidden web data is a major challenge nowadays because of autonomous and heterogeneous nature of hidden web content traditional stress engine has now become an ineffective way to search this kind of data. The main outcomes of this project were user friendly search interface, indexing, query processing, and effective data extraction technique based on web structure, Hidden web data need synthetic and semantic matching to fully achieve automatic integration in this thesis fully automatic and domain dependent prototype system is proposed that extract and integrate the data lying behind the search form for tpo’s. And other websites as study guides for the college details .
 
 ## REFERENCES
-For getting an overview how scrapping takes place: https://www.youtube.com/watch?v=mKxFfjNyj3c
+
+For getting an overview how scrapping takes place go to the link below: 
+https://www.youtube.com/watch?v=mKxFfjNyj3c
+
 Beautiful soup documentation:
 https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+
 pandas and matplotlib documentation:
 https://tanthiamhuat.files.wordpress.com/2018/04/pythondatasciencehandbook.pdf

@@ -79,44 +79,64 @@ class Dte_Details:
 
 
 # step 2
+# Define a class to scrape the links for each college information
 class Dte_mainsite:
-    # Scrapping links for each college information
+    # Initialize the class
     def __init__(self):
+        # Create a CSV file to store the information
         self.filename = "Colleges.csv"
         f = open(self.filename, "w")
+        # Write the headers to the file
         self.headers = "COLLEGE_NAME,ADDRESS,DISTRICT,STATE,OFFICE_NUMBER,EMAIl,WEBSITE_LINK\n"
         f.write(self.headers)
+        # Print the headers and a separator
         print(self.headers)
         print("---" * 60)
-        # my_url contains all the urls present in dte maharashtra site
+        # Store the urls of the dte maharashtra site in a list
         self.my_url = ["http://dtemaharashtra.gov.in/frmInstituteList.aspx?RegionID=3&RegionName=Mumbai",
                        "http://dtemaharashtra.gov.in/frmInstituteList.aspx?RegionID=1&RegionName=Amravati",
                        "http://dtemaharashtra.gov.in/frmInstituteList.aspx?RegionID=2&RegionName=Aurangabad",
                        "http://dtemaharashtra.gov.in/frmInstituteList.aspx?RegionID=4&RegionName=Nagpur",
                        "http://dtemaharashtra.gov.in/frmInstituteList.aspx?RegionID=5&RegionName=Nashik"]
 
+        # Loop through the urls
         for urls in self.my_url:
+            # Make a request and read the response
             uClient = uReq(urls)
             page_html = uClient.read()
+            # Close the connection
             uClient.close()
+            # Parse the HTML using soup
             self.page_soup = soup(page_html, "html.parser")
+            # Find the table cells with the class "Item"
             self.containers1 = self.page_soup.findAll("td", {"class": "Item"})
 
+            # Loop through the table cells
             for i in range(1, len(self.containers1)):
+                # Loop through the links in each cell
                 for link in self.containers1[i].findAll('a'):
+                    # Check if the link has a href attribute
                     if link.get('href') is not None:
-                        # lite is the link of the site
+                        # Concatenate the base url with the href attribute
                         self.lite = "http://dtemaharashtra.gov.in/" + link.get('href')
+                        # Create an instance of the Dte_Details class with the link
                         self.site1 = Dte_Details(self.lite)
+                        # Check if the course is Engineering
                         if self.site1.course() == "Engineering":
+                            # Format the row with the information from the link
                             self.row = (self.site1.ClgName().replace(",", "|") + "," + self.site1.Address().replace(",",
                                                                                                                     "|") + "," + self.site1.district().replace(
                                 ",", "|") + "," + self.site1.state() + "," + self.site1.Office_Number() + "," +
                                         self.site1.Email() + "," + self.site1.Website_Link() + "\n")
+                            # Print the row
                             print(self.row)
+                            # Write the row to the file
                             f.write(self.row)
 
+        # Close the file
         f.close()
+        # Check for error in csv file and correct them manually (Mostly alignment issue only and "//" in phone nos)
+
         # check for error in csv file and correct them manually(Mostly alignment issue only  and "//" in phone nos)
 
 

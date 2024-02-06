@@ -36,8 +36,7 @@ The data extracted in the above step need to be stored in a format where it can 
 ## TOOLS USED
 
 ### PYTHON 3.0: 
-   Python is an interpreted, high-level, general-purpose programming language. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant whitespace. Its language constructs and object-oriented approach aim to help programmers write clear, logical code for small and large-scale projects.
-
+   Python is a high-level, versatile programming language that is interpreted. It was developed by Guido van Rossum and launched in 1991. Python’s design philosophy stresses the importance of code readability with its distinctive use of indentation. Its language features and object-oriented style help programmers write coherent, logical code for small and large-scale projects.
 ### BEAUTIFUL SOUP: 
   Beautiful Soup is a Python library for pulling data out of HTML and XML files. It works with your favorite parser to provide idiomatic ways of navigating, searching, and modifying the parse tree. It commonly saves programmers hours or days of work. (pip install beautifulsoup4)for installing.
 

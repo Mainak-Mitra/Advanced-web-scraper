@@ -8,43 +8,28 @@ from urllib.request import Request, urlopen
 # step 1
 
 # Define a class to scrape one site of dte website and get the result
-class Dte_Details:
-    # Initialize the class with a url parameter
-    def __init__(self, url):
-        # Store the url as an attribute
+# Scrapping one site of dte website and getting the result
+    def __init__(self, url, ):
         self.my_url = url
-        # Make a request to the url and read the response
         self.uClient = uReq(self.my_url)
         self.page_html = self.uClient.read()
-        # Close the connection
         self.uClient.close()
-        # Parse the HTML using soup
         self.page_soup = soup(self.page_html, "html.parser")
-        # Find and store the institute code from the page
         self._ID = (self.page_soup.findAll("span", {"id": "ctl00_ContentPlaceHolder1_lblInstituteCode"}))[0].text
-        # Find and store the institute name from the page
         self._ClgName = self.page_soup.findAll("span", {"id": "ctl00_ContentPlaceHolder1_lblInstituteNameEnglish"})[
             0].text
-        # Find and store the address from the page
         self._Address = (self.page_soup.findAll("span", {"id": "ctl00_ContentPlaceHolder1_lblAddressEnglish"}))[0].text
-        # Find and store the email address from the page
         self._Email = (self.page_soup.findAll("span", {"id": "ctl00_ContentPlaceHolder1_lblEMailAddress"}))[0].text
-        # Find and store the district from the page
+
         self._district = (self.page_soup.findAll("span", {"id": "ctl00_ContentPlaceHolder1_lblDistrict"}))[0].text
-        # Find and store the website link from the page
+
         self._Website_link = (self.page_soup.findAll("span", {"id": "ctl00_ContentPlaceHolder1_lblWebAddress"}))[0].text
-        # Find and store the office number from the page
         self._Office_Number = (list(
             (self.page_soup.findAll("span", {"id": "ctl00_ContentPlaceHolder1_lblOfficePhoneNo"}))[0].text.split(
                 " "))[0])
-        # Find and store the personal number from the page
         self._Personal_Number = (
             list(((self.page_soup.findAll("span", {"id": "ctl00_ContentPlaceHolder1_lblPersonalPhoneNo"}))[
                       0].text).split(" "))[0])
-
-
-        # self._course = (self.page_soup.findAll("", {"": ""}))[0].text
-
     # College Name
     def ClgName(self):
         return self._ClgName.strip()
